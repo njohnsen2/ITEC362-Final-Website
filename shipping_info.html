@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-38344306L6"></script>
+      <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+
+         gtag('config', 'G-38344306L6');
+      </script>
+
+      <title>Antiques Tools a Specialty</title>
+      <meta charset="UTF-8">
+      <meta name="description" content="Store-front for antique items and tools">
+      <meta name="keywords" content="Antiques, Blacksmithing, Woodworking, Tinsmithing, Firearms, Anvils">
+      <meta name="author" content="Noah Johnsen">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="design.css">
+   </head>
+
+   <body>
+      <header>
+         <div>
+            <img class="left-logo" src="images/logo.png" alt="Anvil Logo">
+            <h1>ANTIQUES<br>TOOLS A SPECIALTY</h1>
+            <img class="right-logo" src="images/logo.png" alt="Anvil Logo">
+         </div>
+
+         <h2>Woodworking and Metalworking</h2>
+         <p>- - - - - - - - - - - - - - - - - - -</p>
+         <h3>Specializing in Blacksmithing and Tinsmithing</h3>
+
+         <nav class="main-nav">
+            <a href="index.html">HOME</a>
+            <a href="products.html">CATALOG</a>
+            <a href="shipping_info.html">SHIPPING INFO</a>
+            <a href="contact.html">CONTACT US</a>
+         </nav>
+      </header>
+
+      <main>
+         <section class="shipping-section">
+            <h2>Shipping Info</h2>
+            <h4>*** ALL ITEMS ARE AVAILABLE FOR PICKUP ***</h4>
+            <p>All items will be shipped using Old Dominion shipping services.</p>
+            <p>Shipping fees may vary depending on weight, which can be calculated below:</p>
+
+            <div class="shipping-calc">
+               <div>
+                  <label for="weight">Enter the weight (in pounds):</label>
+                  <input type="number" id="weight" name="weight" min="1" max="500">
+                  <p id="error"></p>
+                  <p id="price"></p>
+               </div>
+
+               <button onclick="calculatePrice()">Calculate Shipping Price</button>
+               
+               <script>
+                  function calculatePrice() {
+                     var weight = parseInt(document.getElementById("weight").value);
+                     var price = 0;
+
+                     function errorMessage() {
+                        var error = document.getElementById("error");
+                        if (weight > 1000) {
+                           error.innerHTML = weight + " pounds exceeds the maximum shipping weight. Please enter a weight between 1 and 1000.";
+                        }
+                        else if (weight < 1) {
+                           error.innerHTML = "Entered weight must be at least 1 pound.";
+                        }
+                        else {
+                           error.innerHTML = ""
+                        }
+                     }
+
+                     if (weight < 1 || weight > 1000) {
+                        document.getElementById("price").innerHTML = "";
+                        errorMessage();
+                        return;
+                     }
+
+                     else {
+                        error.innerHTML = ""
+                        if (weight >= 1 && weight <=49) {
+                           price = 25;
+                        }
+
+                        else if (weight >= 50 && weight <=99) {
+                           price = 25 + (weight * 0.5);
+                        }
+
+                        else if (weight >= 100 && weight <= 249) {
+                           price = 75 + (weight * 0.4);
+                        }
+
+                        else if (weight >= 250 && weight <= 499) {
+                           price = 175 + (weight * 0.3);
+                        }
+
+                        else {
+                           price = 350;
+                        }
+
+                        document.getElementById("price").innerHTML = "Shipping price for " + weight + " pound(s): $" + price.toFixed(2);
+                     }
+                  }
+               </script>
+            </div>
+         </section>
+      </main>
+
+      <footer>
+         <div class="footer-container">
+            <div class="footer-site-map">
+               <h3>Site Map</h3>
+               <nav>
+                  <a href="index.html">HOME</a></li>
+                  <a href="products.html">CATALOG</a></li>
+                  <a href="shipping_info.html">SHIPPING INFO</a></li>
+                  <a href="contact.html">CONTACT US</a></li>
+               </nav>
+            </div>
+
+            <div class="footer-contact">
+               <h3>Contacts</h3>
+               <address>
+                  <p><span class="underline">Email</span>: antiquesspecialty@gmail.com</p>
+                  <p><span class="underline">Phone Number</span>: 508-274-9831</p>
+                  <p><span class="underline">Address</span>: 482 Pine Street, South Weymouth, MA 02190</p>
+               </address>
+            </div>
+         </div>
+      </footer>
+   </body>
+</html>
